@@ -1,4 +1,4 @@
-package com.mert.shoppinglist
+package com.mert.shoppinglist.data.db.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

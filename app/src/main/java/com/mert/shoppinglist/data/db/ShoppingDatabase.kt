@@ -1,9 +1,10 @@
-package com.mert.shoppinglist
+package com.mert.shoppinglist.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.mert.shoppinglist.data.db.entities.ShoppingItem
 
 @Database(entities = [ShoppingItem::class], version = 1) // gives our entity names to database, and db version
 abstract class ShoppingDatabase: RoomDatabase() { // RoomDatabase is android sqlite database actually
@@ -17,8 +18,8 @@ abstract class ShoppingDatabase: RoomDatabase() { // RoomDatabase is android sql
 
         // this func executed always beginning of when create an ShoppingDatabase object
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK){ // synchronized= no other threads can access that instance in the same time
-            instance?: createDatabase(context).also { // if instance is null creating new database and with "also" we set our new db to instance of it
-                instance=it
+            instance ?: createDatabase(context).also { // if instance is null creating new database and with "also" we set our new db to instance of it
+                instance =it
             }
         }
 
